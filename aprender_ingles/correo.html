@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  
+<!-- Mirrored from inglesvirtual123.com/aprender_ingles/correo.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 30 Sep 2018 20:23:46 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Aprender ingles en linea">
+    <meta name="author" content="Liusber Estrada">
+    <title>Aprender ingles en linea</title>
+    <link href="vendor/bootstrap/css/bootstrap.min_a.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/small-business.css" rel="stylesheet">
+  </head>
+  <body style="padding-top:0px; background-color:#ef5660">
+    <style>
+button{
+    background-color: #535368;
+        background-image: none;
+        border-color: transparent;
+        color: #e6e6e6;
+        text-shadow: 0 0 0;
+        box-shadow: 0 0 0;
+}
+.mundo1
+{
+    background-image: url('img/Ingles%20Virtual%20123-04-min.png');
+    background-repeat: no-repeat;
+    background-position:right bottom;
+}
+
+.mundo2
+{
+    background-image: url('img/Ingles%20Virtual%20123-04-min.png');
+    background-repeat: no-repeat;
+}
+
+
+</style>
+
+      <!-- /.row -->
+    <div class="container" style="font-family: 'nexa bold';">
+<br><br><br>
+      <!-- Content Row -->
+
+      <!-- /.row -->
+
+
+      <div class="row ml-5 mundo1" style="margin-top:100px;padding-bottom:-10px;color:white">
+        <div class="col-md-8 " style="padding-right:40px;padding-left:30px">
+<h2 class="top-tit azul" style="font-size:60px;font-family:nexa bold">
+¡ GRACIAS POR<BR>
+COMPARTIRNOS<BR>
+TUS DATOS !
+</h2>
+
+<h2 class="top-tit azul" style="font-size:20px;font-family:nexa bold">
+NOS PONDREMOS EN CONTACTO CONTIGO LO ANTES POSIBLE<BR>
+PARA QUE TENGAS ACCESO EXCLUSIVO AL CURSO DE INGLES
+</h2>
+<br>
+<div style="width:100%; height:5px; background-color:white"></div>
+<br>
+<h2 class="top-tit azul" style="font-size:30px;font-family:nexa bold">BENEFICIOS DE APRENDER INGLES</h2>
+<br>
+<p class="gris">
+<ul style="list-style-type:none;">
+    <li style="padding-top: 9px;" ><img src="img/Ingles%20Virtual%20123-06-min.png" style="width:35px;">EL APRENDER INGLES AUMENTARA TU CONFIANZA ANTE LAS DEMAS PERSONAS</li>
+    <li style="padding-top: 9px;" ><img src="img/Ingles%20Virtual%20123-07-min.png" style="width:35px;">TENDRAS CONOCIMIENTOS DEL IDIOMA INTERNACIONAL Y DE NEGOCIOS</li>
+    <li style="padding-top: 9px;" ><img src="img/Ingles%20Virtual%20123-08-min.png" style="width:35px;">OBTENDRAS MAYOR OPORTUNIDAD DE EMPLEO</li>
+</ul>
+</p>
+        </div>
+
+      </div>
+      <!-- /.row -->
+    </div>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="../../maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function()
+    {
+
+        $('.enviar').click(function(e){
+            $('.enviar').hide();
+            var nombre=$('input[name=nombre]').val();
+            var apellido=$('input[name=apellido]').val();
+        	var telefono=$('input[name=tel]').val();
+        	var correo=$('input[name=correo]').val();
+            var correob=$('input[name=correob]').val();
+            var cp=$('textarea[name=cp]').val();
+            var edo=$('textarea[name=edo]').val();
+
+
+       var formData = new FormData();
+       formData.append('nombre',nombre);
+       formData.append('apellido',apellido);
+       formData.append('telefono',telefono);
+       formData.append('correo',correo);
+       formData.append('correob',correob);
+       formData.append('cp',cp);
+       formData.append('edo',edo);
+            enviarCorreo(formData);
+
+    });
+
+
+
+
+
+});
+
+function enviarCorreo(formData)
+{
+$('.texto').html('<img src="img/ajax-loader.html">');
+
+        $.ajax({
+                   method: 'post',
+                   processData: false,
+                   contentType: false,
+                   cache: false,
+                   data: formData,
+                   enctype: 'multipart/form-data',
+                   url: 'enviarCorreo/correo/accion.php',
+                   success: function (result) {
+
+		if(result==1)
+		{
+            $('.loading').hide();
+            $('.texto').html('Hemos recibido su mensaje, para poner en contacto con usted, Gracias! ');
+		}
+        if(result==0)
+		{
+
+            alert('Es necesario que complete la informacion solicitada para poder enviar el mensaje ');
+            $('.enviar').show();
+            $('.texto').html('');
+		}
+        }
+    });
+
+}
+</script>
+  </body>
+
+<!-- Mirrored from inglesvirtual123.com/aprender_ingles/correo.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 30 Sep 2018 20:23:48 GMT -->
+</html>
